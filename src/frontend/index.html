@@ -5,9 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Financial Statement Chart</title>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <h1>Welcome to Financial Statement Chart</h1>
+    <header>
+      <h1>Financial Statement Chart</h1>
+    </header>
+    <main>
+      <section id="data-input">
+        <h2>Enter Financial Data</h2>
+        <form id="financial-form">
+          <label for="revenue">Revenue:</label>
+          <input type="number" id="revenue" name="revenue" required />
+          <label for="expenses">Expenses:</label>
+          <input type="number" id="expenses" name="expenses" required />
+          <button type="submit">Generate Chart</button>
+        </form>
+      </section>
+      <section id="chart-display">
+        <h2>Chart</h2>
+        <canvas id="financial-chart"></canvas>
+      </section>
+    </main>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
