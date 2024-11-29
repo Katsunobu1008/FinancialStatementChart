@@ -1,0 +1,2 @@
+# FinancialStatementChart
+決算書のデータベースとチャートグラフを作成するためのリポジトリ
