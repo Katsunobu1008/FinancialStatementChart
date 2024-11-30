@@ -244,3 +244,88 @@ document.addEventListener('DOMContentLoaded', () => {
     input.addEventListener('input', updateIncomeChart);
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  // キャッシュフロー DOM要素
+  const operatingCFInput = document.getElementById('operatingCF');
+  const investingCFInput = document.getElementById('investingCF');
+  const financingCFInput = document.getElementById('financingCF');
+
+  // キャッシュフローデータ定義
+  const cashFlowData = {
+    labels: ['営業CF', '投資CF', '財務CF'],
+    datasets: [
+      {
+        label: 'キャッシュフロー',
+        data: [200, -100, 150],
+        backgroundColor: [
+          'rgba(75, 192, 192, 0.8)',
+          'rgba(255, 99, 132, 0.8)',
+          'rgba(54, 162, 235, 0.8)',
+        ],
+      },
+    ],
+  };
+
+  // キャッシュフローグラフ設定
+  const cashFlowConfig = {
+    type: 'bar',
+    data: cashFlowData,
+    options: {
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function (tooltipItem) {
+              return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+            },
+          },
+        },
+        datalabels: {
+          color: '#000',
+          anchor: 'end',
+          align: 'center',
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          borderRadius: 4,
+          padding: 6,
+          font: {
+            size: 12,
+            weight: 'bold',
+          },
+        },
+      },
+      responsive: true,
+      scales: {
+        x: {
+          categoryPercentage: 0.6,
+          barPercentage: 0.8,
+        },
+        y: {
+          ticks: {
+            callback: function (value) {
+              return `${value}`;
+            },
+          },
+        },
+      },
+    },
+    plugins: [ChartDataLabels],
+  };
+
+  const cashFlowCtx = document.getElementById('cashFlowChart').getContext('2d');
+  const cfChart = new Chart(cashFlowCtx, cashFlowConfig);
+
+  // グラフ更新ロジック
+  const updateCashFlowChart = () => {
+    const operatingCF = parseFloat(operatingCFInput.value) || 0;
+    const investingCF = parseFloat(investingCFInput.value) || 0;
+    const financingCF = parseFloat(financingCFInput.value) || 0;
+
+    // グラフデータ更新
+    cashFlowData.datasets[0].data = [operatingCF, investingCF, financingCF];
+    cfChart.update();
+  };
+
+  // 入力イベントを監視
+  [operatingCFInput, investingCFInput, financingCFInput].forEach((input) => {
+    input.addEventListener('input', updateCashFlowChart);
+  });
+});
