@@ -3,24 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>バランスシート、損益計算書、キャッシュフローのグラフ</title>
+    <title>貸借対照表（BS）</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
   </head>
   <body>
-    <div class="chart-container">
-      <h2>バランスシート（BS）</h2>
-      <canvas id="balanceSheetChart"></canvas>
-    </div>
-    <div class="chart-container">
-      <h2>損益計算書（PL）</h2>
-      <canvas id="incomeStatementChart"></canvas>
-    </div>
-    <div class="chart-container">
-      <h2>キャッシュフロー（CF）</h2>
-      <canvas id="cashFlowChart"></canvas>
-    </div>
+    <header>
+      <h1>貸借対照表（BS）</h1>
+    </header>
+    <main>
+      <!-- 入力フォーム -->
+      <section>
+        <table>
+          <thead>
+            <tr>
+              <th>資産の部</th>
+              <th>金額</th>
+              <th>負債の部</th>
+              <th>金額</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>流動資産</td>
+              <td><input type="number" id="currentAssets" value="80" /></td>
+              <td>流動負債</td>
+              <td>
+                <input type="number" id="currentLiabilities" value="40" />
+              </td>
+            </tr>
+            <tr>
+              <td>固定資産</td>
+              <td><input type="number" id="fixedAssets" value="120" /></td>
+              <td>固定負債</td>
+              <td><input type="number" id="fixedLiabilities" value="30" /></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>純資産</td>
+              <td><input type="number" id="netAssets" value="130" /></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>資産合計</th>
+              <th id="totalAssets">200</th>
+              <th>負債・純資産合計</th>
+              <th id="totalLiabilitiesAndNetAssets">200</th>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+      <!-- グラフエリア -->
+      <section>
+        <canvas id="balanceSheetChart"></canvas>
+      </section>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

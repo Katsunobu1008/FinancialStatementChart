@@ -1,24 +1,43 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  background-color: #f9f9f9;
+  text-align: center;
 }
 
-.chart-container {
-  width: 600px;
-  margin: 20px;
-  background-color: #ffffff;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 1em;
+}
+
+main {
+  padding: 2em;
+}
+
+table {
+  margin: 0 auto;
+  width: 80%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+  text-align: center;
+}
+
+input[type='number'] {
+  width: 100px;
+  padding: 0.3em;
 }
 
 canvas {
-  max-width: 100%;
+  max-width: 80%;
+  margin: 20px auto;
+  display: block;
 }
