@@ -3,14 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>バランスシート積み上げ棒グラフ</title>
+    <title>バランスシートと損益計算書のグラフ</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
   </head>
   <body>
     <div class="chart-container">
+      <h2>バランスシート（BS）</h2>
       <canvas id="balanceSheetChart"></canvas>
+    </div>
+    <div class="chart-container">
+      <h2>損益計算書（PL）</h2>
+      <canvas id="incomeStatementChart"></canvas>
     </div>
     <script src="script.js"></script>
   </body>
