@@ -16,9 +16,24 @@ main {
   padding: 2em;
 }
 
+.section-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2em;
+}
+
+.table-container {
+  width: 45%;
+}
+
+.chart-container {
+  width: 50%;
+}
+
 table {
   margin: 0 auto;
-  width: 50%;
+  width: 100%;
   border-collapse: collapse;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -32,12 +47,11 @@ td {
 }
 
 input[type='number'] {
-  width: 100px;
+  width: 80px;
   padding: 0.3em;
 }
 
 canvas {
-  max-width: 80%;
-  margin: 20px auto;
+  max-width: 100%;
   display: block;
 }
