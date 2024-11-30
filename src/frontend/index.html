@@ -95,6 +95,37 @@
       <section>
         <canvas id="incomeStatementChart"></canvas>
       </section>
+      <!-- キャッシュフロー表 -->
+      <section>
+        <h2>キャッシュフロー（CF）</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>金額</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>営業CF</td>
+              <td><input type="number" id="operatingCF" value="200" /></td>
+            </tr>
+            <tr>
+              <td>投資CF</td>
+              <td><input type="number" id="investingCF" value="-100" /></td>
+            </tr>
+            <tr>
+              <td>財務CF</td>
+              <td><input type="number" id="financingCF" value="150" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- CFグラフエリア -->
+      <section>
+        <canvas id="cashFlowChart"></canvas>
+      </section>
     </main>
     <script src="script.js"></script>
   </body>
