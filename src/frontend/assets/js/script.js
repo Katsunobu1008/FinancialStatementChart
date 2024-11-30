@@ -132,3 +132,115 @@ document.addEventListener('DOMContentLoaded', () => {
     input.addEventListener('input', updateChart);
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  // 損益計算書 DOM要素
+  const grossProfitInput = document.getElementById('grossProfit');
+  const operatingProfitInput = document.getElementById('operatingProfit');
+  const ordinaryProfitInput = document.getElementById('ordinaryProfit');
+  const netProfitInput = document.getElementById('netProfit');
+
+  // 損益計算書データ定義
+  const incomeStatementData = {
+    labels: ['売上総利益', '営業利益', '経常利益', '純利益'],
+    datasets: [
+      {
+        label: '損益計算書',
+        data: [500, 150, 100, 60],
+        backgroundColor: [
+          'rgba(75, 192, 192, 0.8)',
+          'rgba(255, 99, 132, 0.8)',
+          'rgba(255, 205, 86, 0.8)',
+          'rgba(153, 102, 255, 0.8)',
+        ],
+      },
+    ],
+  };
+
+  // 損益計算書グラフ設定
+  const incomeStatementConfig = {
+    type: 'bar',
+    data: incomeStatementData,
+    options: {
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function (tooltipItem) {
+              return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+            },
+          },
+        },
+        datalabels: {
+          color: '#000',
+          anchor: 'end',
+          align: 'start',
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          borderRadius: 4,
+          padding: 6,
+          font: {
+            size: 12,
+            weight: 'bold',
+          },
+          formatter: function (value, context) {
+            const sales = incomeStatementData.datasets[0].data[0];
+            if (context.dataIndex === 1) {
+              return `営業利益率: ${((value / sales) * 100).toFixed(2)}%`;
+            } else if (context.dataIndex === 2) {
+              return `経常利益率: ${((value / sales) * 100).toFixed(2)}%`;
+            } else if (context.dataIndex === 3) {
+              return `純利益率: ${((value / sales) * 100).toFixed(2)}%`;
+            } else {
+              return null;
+            }
+          },
+        },
+      },
+      responsive: true,
+      scales: {
+        x: {
+          categoryPercentage: 0.6,
+          barPercentage: 0.8,
+        },
+        y: {
+          ticks: {
+            callback: function (value) {
+              return `${value}`;
+            },
+          },
+        },
+      },
+    },
+    plugins: [ChartDataLabels],
+  };
+
+  const incomeStatementCtx = document
+    .getElementById('incomeStatementChart')
+    .getContext('2d');
+  const incomeChart = new Chart(incomeStatementCtx, incomeStatementConfig);
+
+  // グラフ更新ロジック
+  const updateIncomeChart = () => {
+    const grossProfit = parseFloat(grossProfitInput.value) || 0;
+    const operatingProfit = parseFloat(operatingProfitInput.value) || 0;
+    const ordinaryProfit = parseFloat(ordinaryProfitInput.value) || 0;
+    const netProfit = parseFloat(netProfitInput.value) || 0;
+
+    // グラフデータ更新
+    incomeStatementData.datasets[0].data = [
+      grossProfit,
+      operatingProfit,
+      ordinaryProfit,
+      netProfit,
+    ];
+    incomeChart.update();
+  };
+
+  // 入力イベントを監視
+  [
+    grossProfitInput,
+    operatingProfitInput,
+    ordinaryProfitInput,
+    netProfitInput,
+  ].forEach((input) => {
+    input.addEventListener('input', updateIncomeChart);
+  });
+});
