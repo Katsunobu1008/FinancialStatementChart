@@ -1,3 +1,4 @@
+/* 基本スタイル */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -21,14 +22,17 @@ main {
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 2em;
+  gap: 20px; /* セクション間の間隔 */
 }
 
 .table-container {
   width: 45%;
+  min-width: 300px; /* 最小幅を設定 */
 }
 
 .chart-container {
   width: 50%;
+  min-width: 300px; /* 最小幅を設定 */
 }
 
 table {
@@ -47,11 +51,48 @@ td {
 }
 
 input[type='number'] {
-  width: 80px;
+  width: 100px;
   padding: 0.3em;
 }
 
 canvas {
   max-width: 100%;
+  height: auto; /* グラフの高さを自動調整 */
   display: block;
+}
+
+/* 小さい画面用スタイル */
+@media (max-width: 768px) {
+  .section-container {
+    flex-direction: column; /* 縦並びに変更 */
+    align-items: center;
+  }
+
+  .table-container,
+  .chart-container {
+    width: 100%; /* 幅を画面幅に合わせる */
+  }
+
+  input[type='number'] {
+    width: 80px; /* 入力フィールドを少し小さく */
+  }
+
+  th,
+  td {
+    font-size: 14px; /* テキストサイズを小さく調整 */
+    padding: 0.3em;
+  }
+}
+
+/* 非常に小さい画面用スタイル */
+@media (max-width: 480px) {
+  input[type='number'] {
+    width: 70px; /* 入力フィールドをさらに小さく */
+  }
+
+  th,
+  td {
+    font-size: 12px; /* テキストサイズをさらに小さく */
+    padding: 0.2em;
+  }
 }

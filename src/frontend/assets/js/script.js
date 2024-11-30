@@ -329,3 +329,53 @@ document.addEventListener('DOMContentLoaded', () => {
     input.addEventListener('input', updateCashFlowChart);
   });
 });
+// Chart.js のデフォルトレスポンシブ設定
+const defaultChartOptions = {
+  responsive: true,
+  maintainAspectRatio: false, // アスペクト比を維持しない
+  plugins: {
+    tooltip: {
+      callbacks: {
+        label: function (tooltipItem) {
+          return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+        },
+      },
+    },
+    datalabels: {
+      color: '#000',
+      anchor: 'end',
+      align: 'center',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderRadius: 4,
+      padding: 6,
+      font: {
+        size: 12,
+        weight: 'bold',
+      },
+    },
+  },
+  scales: {
+    x: {
+      categoryPercentage: 0.6,
+      barPercentage: 0.8,
+    },
+    y: {
+      ticks: {
+        callback: function (value) {
+          return `${value}`;
+        },
+      },
+    },
+  },
+};
+
+// 各チャート設定にこのオプションを適用
+balanceSheetConfig.options = {
+  ...balanceSheetConfig.options,
+  ...defaultChartOptions,
+};
+incomeStatementConfig.options = {
+  ...incomeStatementConfig.options,
+  ...defaultChartOptions,
+};
+cashFlowConfig.options = { ...cashFlowConfig.options, ...defaultChartOptions };
