@@ -188,3 +188,67 @@ const incomeStatementCtx = document
   .getElementById('incomeStatementChart')
   .getContext('2d');
 new Chart(incomeStatementCtx, incomeStatementConfig);
+
+// キャッシュフロー（CF）のデータ定義
+const cashFlowData = {
+  labels: ['営業CF', '投資CF', '財務CF'],
+  datasets: [
+    {
+      label: 'キャッシュフロー',
+      data: [200, -100, 150],
+      backgroundColor: [
+        'rgba(75, 192, 192, 0.8)',
+        'rgba(255, 99, 132, 0.8)',
+        'rgba(54, 162, 235, 0.8)',
+      ],
+    },
+  ],
+};
+
+// キャッシュフローグラフの設定
+const cashFlowConfig = {
+  type: 'bar',
+  data: cashFlowData,
+  options: {
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: function (tooltipItem) {
+            return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+          },
+        },
+      },
+      datalabels: {
+        color: '#000',
+        anchor: 'end',
+        align: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        borderRadius: 4,
+        padding: 6,
+        font: {
+          size: 12,
+          weight: 'bold',
+        },
+      },
+    },
+    responsive: true,
+    scales: {
+      x: {
+        categoryPercentage: 0.6, // グラフの間隔を調整
+        barPercentage: 0.8, // バーの幅を適切に調整
+      },
+      y: {
+        ticks: {
+          callback: function (value) {
+            return `${value}`;
+          },
+        },
+      },
+    },
+  },
+  plugins: [ChartDataLabels],
+};
+
+// キャッシュフローグラフの描画
+const cashFlowCtx = document.getElementById('cashFlowChart').getContext('2d');
+new Chart(cashFlowCtx, cashFlowConfig);
