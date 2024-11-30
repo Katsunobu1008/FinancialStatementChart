@@ -3,128 +3,136 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>貸借対照表（BS）</title>
+    <title>財務ダッシュボード</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
   </head>
   <body>
     <header>
-      <h1>貸借対照表（BS）</h1>
+      <h1>財務ダッシュボード</h1>
     </header>
     <main>
-      <!-- 入力フォーム -->
-      <section>
-        <table>
-          <thead>
-            <tr>
-              <th>資産の部</th>
-              <th>金額</th>
-              <th>負債の部</th>
-              <th>金額</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>流動資産</td>
-              <td><input type="number" id="currentAssets" value="80" /></td>
-              <td>流動負債</td>
-              <td>
-                <input type="number" id="currentLiabilities" value="40" />
-              </td>
-            </tr>
-            <tr>
-              <td>固定資産</td>
-              <td><input type="number" id="fixedAssets" value="120" /></td>
-              <td>固定負債</td>
-              <td><input type="number" id="fixedLiabilities" value="30" /></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td>純資産</td>
-              <td><input type="number" id="netAssets" value="130" /></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th>資産合計</th>
-              <th id="totalAssets">200</th>
-              <th>負債・純資産合計</th>
-              <th id="totalLiabilitiesAndNetAssets">200</th>
-            </tr>
-          </tfoot>
-        </table>
-      </section>
-      <!-- グラフエリア -->
-      <section>
-        <canvas id="balanceSheetChart"></canvas>
-      </section>
-      <!-- 損益計算書表 -->
-      <section>
-        <h2>損益計算書（PL）</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>項目</th>
-              <th>金額</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>売上総利益</td>
-              <td><input type="number" id="grossProfit" value="500" /></td>
-            </tr>
-            <tr>
-              <td>営業利益</td>
-              <td><input type="number" id="operatingProfit" value="150" /></td>
-            </tr>
-            <tr>
-              <td>経常利益</td>
-              <td><input type="number" id="ordinaryProfit" value="100" /></td>
-            </tr>
-            <tr>
-              <td>純利益</td>
-              <td><input type="number" id="netProfit" value="60" /></td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- 貸借対照表セクション -->
+      <section class="section-container">
+        <div class="table-container">
+          <h2>貸借対照表（BS）</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>資産の部</th>
+                <th>金額</th>
+                <th>負債の部</th>
+                <th>金額</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>流動資産</td>
+                <td><input type="number" id="currentAssets" value="80" /></td>
+                <td>流動負債</td>
+                <td>
+                  <input type="number" id="currentLiabilities" value="40" />
+                </td>
+              </tr>
+              <tr>
+                <td>固定資産</td>
+                <td><input type="number" id="fixedAssets" value="120" /></td>
+                <td>固定負債</td>
+                <td>
+                  <input type="number" id="fixedLiabilities" value="30" />
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td>純資産</td>
+                <td><input type="number" id="netAssets" value="130" /></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>資産合計</th>
+                <th id="totalAssets">200</th>
+                <th>負債・純資産合計</th>
+                <th id="totalLiabilitiesAndNetAssets">200</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="chart-container">
+          <canvas id="balanceSheetChart"></canvas>
+        </div>
       </section>
 
-      <!-- PLグラフエリア -->
-      <section>
-        <canvas id="incomeStatementChart"></canvas>
-      </section>
-      <!-- キャッシュフロー表 -->
-      <section>
-        <h2>キャッシュフロー（CF）</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>項目</th>
-              <th>金額</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>営業CF</td>
-              <td><input type="number" id="operatingCF" value="200" /></td>
-            </tr>
-            <tr>
-              <td>投資CF</td>
-              <td><input type="number" id="investingCF" value="-100" /></td>
-            </tr>
-            <tr>
-              <td>財務CF</td>
-              <td><input type="number" id="financingCF" value="150" /></td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- 損益計算書セクション -->
+      <section class="section-container">
+        <div class="table-container">
+          <h2>損益計算書（PL）</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th>金額</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>売上総利益</td>
+                <td><input type="number" id="grossProfit" value="500" /></td>
+              </tr>
+              <tr>
+                <td>営業利益</td>
+                <td>
+                  <input type="number" id="operatingProfit" value="150" />
+                </td>
+              </tr>
+              <tr>
+                <td>経常利益</td>
+                <td><input type="number" id="ordinaryProfit" value="100" /></td>
+              </tr>
+              <tr>
+                <td>純利益</td>
+                <td><input type="number" id="netProfit" value="60" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="chart-container">
+          <canvas id="incomeStatementChart"></canvas>
+        </div>
       </section>
 
-      <!-- CFグラフエリア -->
-      <section>
-        <canvas id="cashFlowChart"></canvas>
+      <!-- キャッシュフローセクション -->
+      <section class="section-container">
+        <div class="table-container">
+          <h2>キャッシュフロー（CF）</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th>金額</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>営業CF</td>
+                <td><input type="number" id="operatingCF" value="200" /></td>
+              </tr>
+              <tr>
+                <td>投資CF</td>
+                <td><input type="number" id="investingCF" value="-100" /></td>
+              </tr>
+              <tr>
+                <td>財務CF</td>
+                <td><input type="number" id="financingCF" value="150" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="chart-container">
+          <canvas id="cashFlowChart"></canvas>
+        </div>
       </section>
     </main>
     <script src="script.js"></script>
